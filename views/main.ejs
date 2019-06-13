@@ -1,0 +1,42 @@
+<html>
+
+<link href="/assets/style.css" rel="stylesheet" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>WELCOME</title>
+</head>
+<style>
+    
+</style>
+
+<body>
+    <div>
+        <h1>WELCOME TO LOCKER</h1>
+        <h2>Please select your option</h2>
+        <button type="button" onclick="reg()">Register</button>
+        <button type="button" onclick="login()">Login</button>
+        <button type="button" onclick="test()">TEST</button>
+    </div>
+
+
+
+    <script>
+        function reg() {
+            location.href = "/api/register"
+        }
+
+        function login() {
+            location.href = "/api/login"
+        }
+
+        function non() {
+            location.href = ""
+        }
+
+        function test() {
+            location.href = "/api/test"
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<html>
+<link href="/assets/style.css" rel="stylesheet" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <title>SELECT OPTION</title>
+</head>
+
+<body>
+    <div>
+        <h1>WELCOME <%= Name %></h1>
+        <h2>SELECT YOUR OPTION</h1>
+        <button type="button" onclick="action()">Resgister Locker</button>
+        <button type="button" onclick="input()">Open Locker</button>
+    </div>
+    <script>
+        function action() {
+            location.href = "/api/login/registered"
+        }
+
+        function input() {
+            location.href = "/api/login/code"
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+
+/* The message box is shown when the user clicks on the password field */
+#message {
+  display:none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
+}
+</style>
+</head>
+
+<body>
+
+    <form action="/api/login/reg_success" method="POST">
+        <div class="container">
+            <h1>Choose your locker</h1>
+            <h4>Locker status</h2>
+                <label for="number"><b>Number of locker(s)
+                        <%= Number %><br>
+                        Locker(s):
+                        <%= locker1 %> -
+                        <%= locker2 %> -
+                        <%= locker3 %> -
+                        <%= locker4 %> is(are) available </b></label><br>
+                <hr>
+                <label for="name"><b>User name</b></label>
+                <input type="text" placeholder="Enter User name" name="name" required>
+
+                <label for="email"><b>Code</b></label>
+                <input type="password" placeholder="Enter 8 numbers" id="code" name="code" maxlength="8" required>
+
+                <label for="available"><b>No.LOCKER </b></label> <br>
+                <input type="radio" name="locker" value="1"> 1
+                <input type="radio" name="locker" value="2"> 2
+                <input type="radio" name="locker" value="3"> 3
+                <input type="radio" name="locker" value="4"> 4<br>
+                Locker(s):
+                <%= locker1 %> -
+                <%= locker2 %> -
+                <%= locker3 %> -
+                <%= locker4 %> is(are) available <br>
+                <hr>
+
+                <button type="submit" class="registerbtn">Submit</button>
+        </div>
+    </form>
+
+    <div id="message">
+        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+    </div>
+
+    <script>
+        var myInput = document.getElementById("code");
+        var length = document.getElementById("length");
+
+        myInput.onfocus = function () {
+            document.getElementById("message").style.display = "block";
+        }
+
+        // When the user clicks outside of the password field, hide the message box
+        myInput.onblur = function () {
+            document.getElementById("message").style.display = "none";
+        }
+
+        myInput.onkeyup = function () {
+            // Validate length
+            if (myInput.value.length == 8) {
+                length.classList.remove("invalid");
+                length.classList.add("valid");
+            } else {
+                length.classList.remove("valid");
+                length.classList.add("invalid");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
